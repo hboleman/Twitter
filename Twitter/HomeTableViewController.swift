@@ -34,7 +34,7 @@ class HomeTableViewController: UITableViewController {
     
     @IBAction func onLogOut(_ sender: Any) {
         TwitterAPICaller.client?.logout();
-        self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*
