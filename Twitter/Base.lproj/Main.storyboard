@@ -20,7 +20,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLp-fB-MvA">
                                 <rect key="frame" x="127" y="421" width="160" height="54"/>
-                                <color key="backgroundColor" red="0.54509452914031098" green="0.85692316974245464" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1154716685" green="0.62894904610000002" blue="0.94885319469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="BnM-9a-gnt"/>
                                     <constraint firstAttribute="width" constant="160" id="gY7-D6-fCe"/>
@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="-13.043478260869566" y="-11.383928571428571"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="qcf-Kv-RSb">
             <objects>
-                <tableViewController id="SaZ-qW-LU6" sceneMemberID="viewController">
+                <tableViewController id="SaZ-qW-LU6" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1lo-Xk-Bhy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,14 @@
                             <outlet property="delegate" destination="SaZ-qW-LU6" id="yS2-OG-hgF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="JKa-GJ-Pi8"/>
+                    <navigationItem key="navigationItem" title="Home" id="JKa-GJ-Pi8">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="9Cx-np-mBh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onLogOut:" destination="SaZ-qW-LU6" id="ATa-W4-Xw8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEo-0r-81D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,6 +92,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ilw-41-tSn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.11547166854143143" green="0.62894904613494873" blue="0.94885319471359253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="SaZ-qW-LU6" kind="relationship" relationship="rootViewController" id="jpK-Ds-eLa"/>
