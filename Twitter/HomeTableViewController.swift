@@ -32,9 +32,14 @@ class HomeTableViewController: UITableViewController {
         return 0
     }
     
+    // Nav Bar Logout Button
     @IBAction func onLogOut(_ sender: Any) {
+        // Calls the logout twitter api function.
         TwitterAPICaller.client?.logout();
+        // Moves back a screen in the navigation controller stack.
         self.dismiss(animated: true, completion: nil)
+        // Sets the logged in flag to false.
+        UserDefaults.standard.set(false, forKey: "userLoggedIn");
     }
     
     /*
