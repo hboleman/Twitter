@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     // When screen appears, do logic
     override func viewDidAppear(_ animated: Bool) {
         // Looks for logged in flag. If true, go to twitter screem.

@@ -88,7 +88,6 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
-    
     // Nav Bar Logout Button
     @IBAction func onLogOut(_ sender: Any) {
         // Calls the logout twitter api function.
