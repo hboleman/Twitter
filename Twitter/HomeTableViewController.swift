@@ -35,8 +35,10 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func loadTweets(){
+        // sets number of tweets
+        numberOfTweets = 20;
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json";
-        let myParams = ["count": 10];
+        let myParams = ["count": numberOfTweets];
         
         TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success: { (tweets: [NSDictionary]) in
             // Empties array
@@ -55,8 +57,37 @@ class HomeTableViewController: UITableViewController {
         }, failure: { (Error) in
             print("ERROR: Tweet array could not be retrieved!");
         })
+    }
+    
+    func loadMoreTweets(){
+        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json";
+        let myParams = ["count": numberOfTweets];
+        numberOfTweets = numberOfTweets + 20;
+        
+        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success: { (tweets: [NSDictionary]) in
+            // Empties array
+            self.tweetArray.removeAll();
+            // For loop, creates variable tweet to refer to one element inside of tweets, refer to api caller above
+            for tweet in tweets {
+                // This is appending the element of tweet to the tweetArray
+                self.tweetArray.append(tweet);
+            }
+            // Reloads data
+            self.tableView.reloadData();
+            
+        }, failure: { (Error) in
+            print("ERROR: Tweet array could not be retrieved!");
+        })
         
     }
+    
+    // Will call loadMoreTweets when the user scrolls to the bottom of the UITableView
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
+        if (indexPath.row + 1 == tweetArray.count){
+            loadMoreTweets();
+        }
+    }
+    
     
     // Nav Bar Logout Button
     @IBAction func onLogOut(_ sender: Any) {
