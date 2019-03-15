@@ -121,10 +121,12 @@ class HomeTableViewController: UITableViewController {
             cell.profileImageView.image = UIImage(data: imageData);
         }
         
-        //Set Fav Icon
+        // Set Fav Icon
         cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool);
-        //Set tweetId
+        // Set tweetId
         cell.tweetId = tweetArray[indexPath.row]["id"] as! Int;
+        // Set retweet Icon
+        cell.setRetweeted(tweetArray[indexPath.row]["retweeted"] as! Bool) ;
         
         return cell
     }

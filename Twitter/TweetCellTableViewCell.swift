@@ -34,7 +34,7 @@ class TweetCellTableViewCell: UITableViewCell {
             TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId, success: {
                 self.setFavorite(true);
             }, failure: { (error) in
-                print("ERROR: Favorite did fail: \(error)");
+                print("ERROR: Favorite atempt did fail: \(error)");
             })
         }
         else {
@@ -42,13 +42,18 @@ class TweetCellTableViewCell: UITableViewCell {
             TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId, success: {
                 self.setFavorite(false);
             }, failure: { (error) in
-                print("ERROR: Unfavorite did fail: \(error)");
+                print("ERROR: Unfavorite atempt did fail: \(error)");
             })
         }
         
     }
     
     @IBAction func retweet(_ sender: Any) {
+        TwitterAPICaller.client?.retweet(tweetId: tweetId, success: {
+            self.setRetweeted(true);
+        }, failure: { (error) in
+            print("ERROR: retweet atempt did fail: \(error)")
+        })
         
     }
     
@@ -62,6 +67,18 @@ class TweetCellTableViewCell: UITableViewCell {
         }
         
     }
+    
+    func setRetweeted(_ isRetweeted:Bool){
+        if (isRetweeted){
+            retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+            retweetButton.isEnabled = false;
+        }
+        else{
+            retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+            retweetButton.isEnabled = true;
+        }
+    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
